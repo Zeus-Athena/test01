@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--引入数据库信息-->
+    <properties resource="db.properties"/>
+    <!--给pojo类起别名-->
+    <typeAliases>
+        <package name="com.xzz.pojo"/>
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <!--在全局配置文件中注册映射文件...以下注册三种方法-->
+        <!--方法一,直接加载映射文件所在位置-->
+        <!--<mapper resource="com/xzz/mapper/UserMapper.xml"/>-->
+        <!--方法二,映射文件和接口目录和名字一样,写接口mybatis会自动加上.xml到相同目录下找到映射文件-->
+        <!--<mapper class="com.xzz.mapper.UserMapper"/>-->
+        <!--方法三,-->
+        <package name="com.xzz.mapper"/>
+    </mappers>
+</configuration>
